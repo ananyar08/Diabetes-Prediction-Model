@@ -16,8 +16,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Serve static files (HTML, CSS, JS)
-app.mount("/static", StaticFiles(directory="static"), name="static")
+def serve_index():
+    return FileResponse("index.html") 
 
 # Load model and scaler
 scaler = joblib.load("scaler.pkl")
